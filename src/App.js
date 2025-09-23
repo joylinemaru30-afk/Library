@@ -5,6 +5,8 @@ import Secondcomponent from './components/Secondcomponent';
 import Notfound from './components/Notfound';
 import Signincomponent from './components/Signincomponent';
 import Navbar from './components/Navbar';
+import Lending from './components/Lending';
+import Location from './components/Location';
 
 
 function App() {
@@ -18,6 +20,9 @@ function App() {
           <Route path="/about"element={<Secondcomponent/>}/>
           <Route path="*"element={<Notfound/>}/>
           {/* <Route path="/navbar" element={<Navbar/>}/> */}
+          <Route path="/lend"element={<Lending/>}/>
+          <Route path="/location"element={<Location/>}/>
+          
 
         </Routes>
 

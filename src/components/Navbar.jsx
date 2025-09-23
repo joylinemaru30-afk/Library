@@ -26,6 +26,19 @@ data-bs-target="#navbarcontents"
 
         </li>
 
+        <li className='nav-item'>
+            <b><Link to="/lend" className='nav-link'>lending</Link></b>
+
+        </li>
+
+        <li className='nav-item'>
+            <b><Link to="/location" className='nav-link'>location</Link></b>
+
+        </li>
+
+
+
+
        
 
     </ul>

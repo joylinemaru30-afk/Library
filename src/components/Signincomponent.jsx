@@ -1,4 +1,8 @@
 import React, { useState } from 'react'
+import FooterSocial from "./Footer";
+// import stylings from Secondcomponent.css
+// import Secondcomponent from './Secondcomponent';
+
 
   const Signincomponent= () => {
     const[username,setusername]=useState("")
@@ -33,6 +37,8 @@ import React, { useState } from 'react'
     
       <div className="col-md-6 p-4 card shadow">
     <h3>City Library</h3>
+    {loading && <Loader/>}
+    
 
     <form onSubmit={submit}>
       <input type="text"
@@ -59,10 +65,13 @@ import React, { useState } from 'react'
       {password} <br />
       <button type="submit" className="btn btn-warning">Submit</button>
 
+    
 
     </form>
    </div>
-   </div>
+   <FooterSocial/>
+  </div>
+ 
    
         
   )

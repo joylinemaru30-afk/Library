@@ -1,71 +1,143 @@
-import React from 'react'
-
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Footer from "./Footer";
 
 const Secondcomponent = () => {
   return (
-    <div>
-        <h3>welcome to the second page</h3>
-        <h5>services at City public library</h5>
-        <p> 
-          <ol>
-          <li>
-          It is a communirty space that offers free acces of books,information and technology 
-          </li>
+    <div className=" mt-4">
+      <h3 className="text-center mb-3">Welcome to the Second Page</h3>
+      <h5 className="text-center text-muted">
+        Samples of books found at city library 
+      </h5>
 
-          <li>it promotes reading,supports education and provides programs that encouraged lifelong learning for people of all ages</li>
+      <div className="row justify-content-center mt-3">
+        {/* Book 1 */}
+        <div className="col-md-4 p-4">
+          <div className="card shadow h-100">
+            <img
+              src="images/download56.jpeg"
+              className="card-img-top"
+              alt="Bembea ya maisha"
+            />
+            <div className="card-body">
+              <h4 className="card-title">Bembea ya Maisha</h4>
+              <p className="card-text">
+                The play revolves around family struggles, illness, poverty, and
+                the changes between traditional and modern life.
+              </p>
+              <ul>
+                <li>Swahili play (setbook) for secondary school</li>
+                <li>Contains 76 pages</li>
+              </ul>
+            </div>
+          </div>
+        </div>
 
-          <li>
-            Open from 8:00 to 5:30
+        {/* Book 2 */}
+        <div className="col-md-4 p-4">
+          <div className="card shadow h-100">
+            <img
+              src="images/images34.jpeg"
+              className="card-img-top"
+              alt="Bookset.jss"
+            />
+            <div className="card-body">
+              <h4 className="card-title">Bookset.jss</h4>
+              <p className="card-text">
+                It helps students learn to read well and fluently and also improves there speaking skills.
+               
+              </p>
+               it contains 95 pages
+            </div>
+          </div>
+        </div>
 
-          </li>
-        </ol>
+        {/* Book 3 */}
+        <div className="col-md-4 p-4">
+          <div className="card shadow h-100">
+            <img
+              src="images/download1.jpeg"
+              className="card-img-top"
+              alt="The Samaritan"
+            />
+            <div className="card-body">
+              <h4 className="card-title">The Samaritan</h4>
+              <p className="card-text">
+                This book talks about African leaders who are corrupt and
+                not ready to serve the people.
+              </p>
+            </div>
+          </div>
+        </div>
+     
+      <h2>The library also gifts people who visit their regularly: </h2>
+      <div className="col-md-4 p-4">
+        <div className="card shadow h-100">
+        <img src="images/download 0.jpeg" 
+        alt="gift for youths" />
+        <div className="card-body">
+          <h4 className="card-tittle">Gift for youths</h4>
+          <p className="card-text">
+            its a sample of reward to any youth visiting the library continuosly
+          </p>
+          
+          </div>
 
-        </p>
-        <h4>Some of the available revision materials:</h4>
-        <h4>Bembea ya maisha</h4>
-        <img src="images/download56.jpeg" alt="" width={300} />
-        
-         <p> The play revolves around the family struggles, illness,poverty and the bchanges between traditional and modern life </p>
-          <li>its a swahili play(setbook) for secondary school</li>
-          <li>its contains 76 pages</li>
-        
-        
-        <h4>Bookset.jss</h4>
-        <img src="images/images34.jpeg" alt=""width={100} />
-        <p>it helps students know to read well and fluently </p>
+        </div>
 
-        <h4>The samaritan</h4>
-        <img src="images/download1.jpeg" alt=""width={300} />
-        <p>This book talks abou the african leaders who are corrupt and does not want to work</p>
-        <h5>We also gift people visiting our library regulary</h5>
-    
-    <h5>Kids</h5>
-  <img src="images/3wing.jpeg" alt="" width={300}/> <br /> 
-<h5>Aged</h5>
- <img src="images/download.jpeg" alt=""  width={300}/> <br />
- <h5>Youths</h5>
- <img src="images/download 0.jpeg" alt="" width={300} />
- <p>There are many gifts these are samples of the gifts</p>
- <p>They are categorised according to the age of the people visiting the library</p>
+        </div>
+        <div className="col-md-4 p-4">
+          <div className="card shadow h-100">
+            <img src="images/download.jpeg" 
+            alt="Gift for the aged" />
+            <div className="card-body">
+              <h4 className="card-tittle">Gift for the aged</h4>
+              <p className="card-text">
+                its a sample of gifts to the aged
+              </p>
 
- <h3>We also offer story telling for kids during the afternoon</h3>
- <img src="images/download65.jpeg" alt=""width={300} /> <br />
- <h6>There is also free internet access</h6>
- 
+            </div>
+
+          </div>
+
+        </div>
+        <div className="col-md-4 p-4">
+        <div className="card shadow h-100">
+          <img src="images/3wing.jpeg"
+           alt="Gifts for the young ones" />
+           <div className="card-body">
+            <h4 className="card-tittle">Gifts for the young one</h4>
+            <p className="card-text">
+              its a sample of gifts for the young ones
+            </p>
+
+           </div>
+
+        </div>
+
+      </div>
+      <h4>There is also free internet access</h4>
+      <div className="col-md-4 p-3">
+        <div className="card shadow h-100">
+        <img src="images/download 67.jpeg" 
+      alt="free internet access" />
+      <div className="card-body">
+        <h4 className="card-tittle"> free internet access</h4>
+        <p>for all people</p>
+
+      </div>
+
+        </div>
+
+      </div>
 
 
 
-        
-
+      </div>
+      <Footer/>
       
-        
-        
+      </div>
+      );
+};
 
-
-    </div>
-    
-
-  )
-}
-
-export default Secondcomponent
+export default Secondcomponent;

@@ -1,0 +1,77 @@
+.lending-container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+  }
+  
+  .lending-container h2 {
+    text-align: center;
+    color: #330081;
+    margin-bottom: 20px;
+  }
+  
+  .lending-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .lending-table th,
+  .lending-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+  
+  .lending-table th {
+    background: #f5f5f5;
+    color: #444;
+  }
+  
+  .btn-borrow,
+  .btn-return,
+  .btn-renew,
+  .btn-reserve {
+    margin: 3px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 0.9rem;
+    transition: 0.2s ease-in-out;
+  }
+  
+  /* Button styles */
+  .btn-borrow {
+    background: #28a745;
+  }
+  .btn-borrow:hover {
+    background: #218838;
+  }
+  
+  .btn-return {
+    background: #dc3545;
+  }
+  .btn-return:hover {
+    background: #c82333;
+  }
+  
+  .btn-renew {
+    background: #ffc107;
+    color: #000;
+  }
+  .btn-renew:hover {
+    background: #e0a800;
+  }
+  
+  .btn-reserve {
+    background: #007bff;
+  }
+  .btn-reserve:hover {
+    background: #0069d9;
+  }
+  

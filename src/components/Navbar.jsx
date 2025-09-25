@@ -16,6 +16,11 @@ data-bs-target="#navbarcontents"
 </button>
 <div id ="navbarcontents" className='collapse navbar-collapse'>
 <ul className='navbar-nav ms auto'>
+<li className='nav-item'>
+            <b><Link to="/" className='nav-link'>Home</Link></b>
+
+        </li>
+
         <li className='nav-item'>
             <b><Link to="/about" className='nav-link'>about</Link></b>
 
@@ -35,6 +40,12 @@ data-bs-target="#navbarcontents"
             <b><Link to="/location" className='nav-link'>location</Link></b>
 
         </li>
+        <li className='nav-item'>
+            <b><Link to="/borrow" className='nav-link'>Borrow</Link></b>
+
+        </li>
+
+
 
 
 

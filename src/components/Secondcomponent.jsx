@@ -4,12 +4,43 @@ import Footer from "./Footer";
 
 const Secondcomponent = () => {
   return (
-    <div className=" mt-4">
-      <h3 className="text-center mb-3">Welcome to the Second Page</h3>
-      <h5 className="text-center text-muted">
-        Samples of books found at city library 
-      </h5>
+    <div className="mt-4 container">
+      {/* About Section */}
+      <h2 className="text-center mb-3">About Our City Library</h2>
+      <p>
+        Welcome to the City Library, your hub for knowledge, learning, and community engagement. 
+        Our library has been serving the residents of the city for over 50 years, providing 
+        access to a vast collection of books, digital resources, and educational programs.
+      </p>
 
+      <h4>Our Mission</h4>
+      <p>
+        To foster lifelong learning, support literacy and research, and provide a safe and 
+        welcoming space for all members of the community.
+      </p>
+
+      <h4>What We Offer</h4>
+      <ul>
+        <li>Extensive collection of books, magazines, and newspapers</li>
+        <li>Online library services accessible 24/7</li>
+        <li>Study rooms and community meeting spaces</li>
+        <li>Workshops, reading programs, and educational events</li>
+        <li>Access to digital resources including e-books and audiobooks</li>
+      </ul>
+
+      <h4>Our Vision</h4>
+      <p>
+        To be a cornerstone of knowledge, culture, and community life in the city, 
+        empowering residents of all ages through accessible resources and programs.
+      </p>
+
+      <h4>Contact Information</h4>
+      <p>Email: <strong>citylibrary@gmail.com</strong></p>
+      <p>Phone: <strong>0119852145</strong></p>
+      <p>Follow us on social media: <strong>@citylibraryofflineservice</strong></p>
+
+      {/* Books Section */}
+      <h3 className="text-center mb-3 mt-5">Samples of Books Found at City Library</h3>
       <div className="row justify-content-center mt-3">
         {/* Book 1 */}
         <div className="col-md-4 p-4">
@@ -44,10 +75,9 @@ const Secondcomponent = () => {
             <div className="card-body">
               <h4 className="card-title">Bookset.jss</h4>
               <p className="card-text">
-                It helps students learn to read well and fluently and also improves there speaking skills.
-               
+                Helps students read fluently and improves their speaking skills.
               </p>
-               it contains 95 pages
+              <p>Contains 95 pages</p>
             </div>
           </div>
         </div>
@@ -63,81 +93,71 @@ const Secondcomponent = () => {
             <div className="card-body">
               <h4 className="card-title">The Samaritan</h4>
               <p className="card-text">
-                This book talks about African leaders who are corrupt and
-                not ready to serve the people.
+                Discusses corrupt African leaders who are not ready to serve the people.
               </p>
             </div>
           </div>
         </div>
-     
-      <h2>The library also gifts people who visit their regularly: </h2>
-      <div className="col-md-4 p-4">
-        <div className="card shadow h-100">
-        <img src="images/download 0.jpeg" 
-        alt="gift for youths" />
-        <div className="card-body">
-          <h4 className="card-tittle">Gift for youths</h4>
-          <p className="card-text">
-            its a sample of reward to any youth visiting the library continuosly
-          </p>
-          
-          </div>
+      </div>
 
-        </div>
-
-        </div>
+      {/* Gifts Section */}
+      <h3 className="mt-5">Library Gifts for Regular Visitors</h3>
+      <div className="row justify-content-center mt-3">
+        {/* Gift 1: Youths */}
         <div className="col-md-4 p-4">
           <div className="card shadow h-100">
-            <img src="images/download.jpeg" 
-            alt="Gift for the aged" />
+            <img src="images/youth.jpeg" alt="Gift for youths" className="card-img-top" />
             <div className="card-body">
-              <h4 className="card-tittle">Gift for the aged</h4>
+              <h4 className="card-title">Gift for Youths</h4>
               <p className="card-text">
-                its a sample of gifts to the aged
+                A reward for any youth visiting the library continuously.
               </p>
-
             </div>
-
           </div>
-
         </div>
+
+        {/* Gift 2: Aged */}
         <div className="col-md-4 p-4">
-        <div className="card shadow h-100">
-          <img src="images/3wing.jpeg"
-           alt="Gifts for the young ones" />
-           <div className="card-body">
-            <h4 className="card-tittle">Gifts for the young one</h4>
-            <p className="card-text">
-              its a sample of gifts for the young ones
-            </p>
-
-           </div>
-
+          <div className="card shadow h-100">
+            <img src="images/download.jpeg" alt="Gift for the aged" className="card-img-top" />
+            <div className="card-body">
+              <h4 className="card-title">Gift for the Aged</h4>
+              <p className="card-text">
+                A sample of gifts for the elderly.
+              </p>
+            </div>
+          </div>
         </div>
 
+        {/* Gift 3: Young Ones */}
+        <div className="col-md-4 p-4">
+          <div className="card shadow h-100">
+            <img src="images/3wing.jpeg" alt="Gifts for the young ones" className="card-img-top" />
+            <div className="card-body">
+              <h4 className="card-title">Gifts for the Young Ones</h4>
+              <p className="card-text">
+                A sample of gifts for young children visiting the library.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
-      <h4>There is also free internet access</h4>
+
+      {/* Free Internet Section */}
+      <h4 className="mt-5">Free Internet Access</h4>
       <div className="col-md-4 p-3">
         <div className="card shadow h-100">
-        <img src="images/download 67.jpeg" 
-      alt="free internet access" />
-      <div className="card-body">
-        <h4 className="card-tittle"> free internet access</h4>
-        <p>for all people</p>
-
-      </div>
-
+          <img src="images/internet.jpeg" alt="Free internet access" className="card-img-top" />
+          <div className="card-body">
+            <h4 className="card-title">Free Internet Access</h4>
+            <p>Available for all visitors.</p>
+          </div>
         </div>
-
       </div>
 
-
-
-      </div>
-      <Footer/>
-      
-      </div>
-      );
+      <Footer />
+    </div>
+  );
 };
 
 export default Secondcomponent;

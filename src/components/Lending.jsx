@@ -1,84 +1,97 @@
 import React, { useState } from "react";
-import Footer from "./Footer";
+import "./Booklending.css";
 
-const Lending = () => {
-  const [name, setname] = useState("");
-  const [textbook, settextbook] = useState("");
-  const [date, setdate] = useState("");
-  const [residence, setresidence] = useState("");
-  const [loading, setloading] = useState(false);
+const BookLending = () => {
+  // Dummy books (normally from backend/API)
+  const [books, setBooks] = useState([
+    { id: 1, title: "The Great Gatsby", type: "Physical", borrowed: false, reserved: false },
+    { id: 2, title: "1984", type: "E-Book (PDF)", borrowed: false, reserved: false },
+    { id: 3, title: "Becoming", type: "Audiobook", borrowed: false, reserved: false },
+  ]);
 
-  const submit = async (e) => {
-    e.preventDefault();
-    setloading(true);
-
-    // simulate async operation (like API call)
-    setTimeout(() => {
-      setloading(false); // just stop loader, no alert
-    }, 2000);
+  // Toggle borrow/return
+  const handleBorrow = (id) => {
+    setBooks(
+      books.map((book) =>
+        book.id === id ? { ...book, borrowed: !book.borrowed } : book
+      )
+    );
   };
 
-  const Loader = () => (
-    <div className="hourglassBackground d-flex justify-content-center align-items-center">
-      <div className="hourglassContainer">
-        <div className="hourglassCurves"></div>
-        <div className="hourglassCapTop"></div>
-        <div className="hourglassGlassTop"></div>
-        <div className="hourglassSand"></div>
-        <div className="hourglassSandStream"></div>
-        <div className="hourglassCapBottom"></div>
-        <div className="hourglassGlass"></div>
-      </div>
-    </div>
-  );
+  // Renewal just alerts for now
+  const handleRenew = (id) => {
+    alert(`Book ID ${id} renewed successfully!`);
+  };
+
+  // Reservation
+  const handleReserve = (id) => {
+    setBooks(
+      books.map((book) =>
+        book.id === id ? { ...book, reserved: !book.reserved } : book
+      )
+    );
+  };
 
   return (
-    <div className="row justify-content-center mt-4">
-      <div className="col-md-6 p-4 card shadow">
-        {loading ? (
-          <Loader />
-        ) : (
-          <form onSubmit={submit}>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Enter your name here"
-              value={name}
-              onChange={(e) => setname(e.target.value)}
-            />{" "}
-            <br />
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Enter your textbook name here"
-              value={textbook}
-              onChange={(e) => settextbook(e.target.value)}
-            />{" "}
-            <br />
-            <input
-              type="date"
-              className="form-control"
-              value={date}
-              onChange={(e) => setdate(e.target.value)}
-            />{" "}
-            <br />
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Enter your residence here"
-              value={residence}
-              onChange={(e) => setresidence(e.target.value)}
-            />{" "}
-            <br />
-            <button type="submit" className="btn btn-warning w-100">
-              Submit
-            </button>
-          </form>
-        )}
-      </div>
-      <Footer />
+    <div className="lending-container">
+      <h2>📚 Book Lending Services</h2>
+
+      <table className="lending-table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {books.map((book) => (
+            <tr key={book.id}>
+              <td>{book.title}</td>
+              <td>{book.type}</td>
+              <td>
+                {book.borrowed
+                  ? "Borrowed"
+                  : book.reserved
+                  ? "Reserved"
+                  : "Available"}
+              </td>
+              <td>
+                {/* Borrow / Return */}
+                <button
+                  onClick={() => handleBorrow(book.id)}
+                  className={book.borrowed ? "btn-return" : "btn-borrow"}
+                >
+                  {book.borrowed ? "Return" : "Borrow"}
+                </button>
+
+                {/* Renew */}
+                {book.borrowed && (
+                  <button
+                    onClick={() => handleRenew(book.id)}
+                    className="btn-renew"
+                  >
+                    Renew
+                  </button>
+                )}
+
+                {/* Reserve */}
+                {!book.borrowed && (
+                  <button
+                    onClick={() => handleReserve(book.id)}
+                    className="btn-reserve"
+                  >
+                    {book.reserved ? "Cancel Reservation" : "Reserve"}
+                  </button>
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
 
-export default Lending;
+export default BookLending;

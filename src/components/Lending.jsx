@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Footer from "./Footer"; // Import the Footer
 import "./Booklending.css";
 
 const BookLending = () => {
@@ -90,6 +91,9 @@ const BookLending = () => {
           ))}
         </tbody>
       </table>
+
+      {/* Bind Footer */}
+      <Footer />
     </div>
   );
 };

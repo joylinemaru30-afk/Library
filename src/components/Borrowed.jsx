@@ -1,81 +1,88 @@
-import React, { useState, useEffect } from "react";
-import "./Stylings/borrowed.css";
+import React, { useState } from "react";
+import Footer from "./Footer";
+import "./Booklending.css";
 
-const Dashboard = () => {
-  // Dummy data – in a real app, this would come from an API
-  const [borrowedBooks, setBorrowedBooks] = useState([
-    { title: "The Great Gatsby", dueDate: "2025-10-05" },
-    { title: "1984", dueDate: "2025-10-12" },
-    { title: "A Brief History of Time", dueDate: "2025-10-20" },
+const BookLending = () => {
+  const [books, setBooks] = useState([
+    { id: 1, title: "The Great Gatsby", type: "Physical", borrowed: false, reserved: false },
+    { id: 2, title: "1984", type: "E-Book (PDF)", borrowed: false, reserved: false },
+    { id: 3, title: "Becoming", type: "Audiobook", borrowed: false, reserved: false },
   ]);
 
-  const [events, setEvents] = useState([
-    { name: "Author Meet & Greet", date: "2025-10-15" },
-    { name: "Children's Storytelling Hour", date: "2025-10-18" },
-    { name: "Digital Literacy Workshop", date: "2025-10-25" },
-  ]);
+  const handleBorrow = (id) => {
+    setBooks(
+      books.map((book) =>
+        book.id === id ? { ...book, borrowed: !book.borrowed } : book
+      )
+    );
+  };
 
-  const [resources, setResources] = useState([
-    { title: "E-Book: Clean Code", link: "#" },
-    { title: "Journal: Nature Science", link: "#" },
-    { title: "E-Book: The Pragmatic Programmer", link: "#" },
-  ]);
+  const handleRenew = (id) => {
+    alert(`Book ID ${id} renewed successfully!`);
+  };
 
-  // Highlight overdue books
-  const today = new Date();
+  const handleReserve = (id) => {
+    setBooks(
+      books.map((book) =>
+        book.id === id ? { ...book, reserved: !book.reserved } : book
+      )
+    );
+  };
 
   return (
-    <div className="dashboard-container">
-      <h2 className="dashboard-title">📖 City Library Dashboard</h2>
+    <div className="app-container">
+      <div className="main-content">
+        <h2>📚 Book Lending Services</h2>
+        <table className="lending-table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Type</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {books.map((book) => (
+              <tr key={book.id}>
+                <td>{book.title}</td>
+                <td>{book.type}</td>
+                <td>
+                  {book.borrowed
+                    ? "Borrowed"
+                    : book.reserved
+                    ? "Reserved"
+                    : "Available"}
+                </td>
+                <td>
+                  <button
+                    onClick={() => handleBorrow(book.id)}
+                    className={book.borrowed ? "btn-return" : "btn-borrow"}
+                  >
+                    {book.borrowed ? "Return" : "Borrow"}
+                  </button>
 
-      {/* Borrowed Books Section */}
-      <div className="dashboard-card">
-        <h3>Borrowed Books</h3>
-        {borrowedBooks.length > 0 ? (
-          <ul>
-            {borrowedBooks.map((book, idx) => {
-              const isOverdue = new Date(book.dueDate) < today;
-              return (
-                <li key={idx} className={isOverdue ? "overdue" : ""}>
-                  <span>{book.title}</span>
-                  <span>Due: {book.dueDate}</span>
-                </li>
-              );
-            })}
-          </ul>
-        ) : (
-          <p>No borrowed books yet.</p>
-        )}
+                  {book.borrowed && (
+                    <button onClick={() => handleRenew(book.id)} className="btn-renew">
+                      Renew
+                    </button>
+                  )}
+
+                  {!book.borrowed && (
+                    <button onClick={() => handleReserve(book.id)} className="btn-reserve">
+                      {book.reserved ? "Cancel Reservation" : "Reserve"}
+                    </button>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
 
-      {/* Events Section */}
-      <div className="dashboard-card">
-        <h3>Upcoming Events</h3>
-        <ul>
-          {events.map((event, idx) => (
-            <li key={idx}>
-              <span>{event.name}</span>
-              <span>{event.date}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Digital Resources */}
-      <div className="dashboard-card">
-        <h3>Digital Resources</h3>
-        <ul>
-          {resources.map((res, idx) => (
-            <li key={idx}>
-              <a href={res.link} target="_blank" rel="noopener noreferrer">
-                {res.title}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <Footer />
     </div>
   );
 };
 
-export default Dashboard;
+export default BookLending;

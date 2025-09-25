@@ -101,4 +101,9 @@
       text-align: left;
     }
   }
+  .site-footer {
+    width: 100%;
+    flex-shrink: 0;
+  }
+  
   

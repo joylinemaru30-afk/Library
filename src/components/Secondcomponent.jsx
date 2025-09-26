@@ -1,163 +1,111 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { FaBook, FaLaptop, FaUsers, FaWifi, FaCalendarAlt } from "react-icons/fa";
 import Footer from "./Footer";
+import "./Stylings/secondcomponent.css";
 
-const Secondcomponent = () => {
+
+const About = () => {
   return (
-    <div className="mt-4 container">
-      {/* About Section */}
-      <h2 className="text-center mb-3">About Our City Library</h2>
-      <p>
-        Welcome to the City Library, your hub for knowledge, learning, and community engagement. 
-        Our library has been serving the residents of the city for over 50 years, providing 
-        access to a vast collection of books, digital resources, and educational programs.
-      </p>
+    <div className="about-page container mt-5">
+      {/* Hero Section */}
+      <section className="text-center mb-5">
+        <h1 className="fw-bold display-4 text-primary">📖 About City Library</h1>
+        <p className="lead text-muted">
+          A place where knowledge meets community — serving our city for over 50 years.
+        </p>
+      </section>
 
-      <h4>Our Mission</h4>
-      <p>
-        To foster lifelong learning, support literacy and research, and provide a safe and 
-        welcoming space for all members of the community.
-      </p>
+      {/* History / Intro */}
+      <section className="mb-5">
+        <h2 className="fw-bold">Welcome to City Library</h2>
+        <p>
+          For more than five decades, City Library has been the heart of knowledge,
+          creativity, and community life. Founded in 1972, our mission has always been
+          to provide free and open access to information, support lifelong learning, 
+          and connect people of all ages with the resources they need.
+        </p>
+      </section>
 
-      <h4>What We Offer</h4>
-      <ul>
-        <li>Extensive collection of books, magazines, and newspapers</li>
-        <li>Online library services accessible 24/7</li>
-        <li>Study rooms and community meeting spaces</li>
-        <li>Workshops, reading programs, and educational events</li>
-        <li>Access to digital resources including e-books and audiobooks</li>
-      </ul>
+      {/* Mission and Vision */}
+      <section className="row mb-5">
+        <div className="col-md-6">
+          <div className="p-4 shadow rounded bg-light h-100">
+            <h3 className="text-success fw-bold">Our Mission</h3>
+            <p>
+              To foster curiosity, inspire learning, and promote literacy by providing
+              resources, programs, and spaces that support lifelong growth for everyone.
+            </p>
+          </div>
+        </div>
+        <div className="col-md-6 mt-3 mt-md-0">
+          <div className="p-4 shadow rounded bg-light h-100">
+            <h3 className="text-info fw-bold">Our Vision</h3>
+            <p>
+              To be a dynamic center of culture, education, and innovation where every
+              member of the community feels welcome and empowered.
+            </p>
+          </div>
+        </div>
+      </section>
 
-      <h4>Our Vision</h4>
-      <p>
-        To be a cornerstone of knowledge, culture, and community life in the city, 
-        empowering residents of all ages through accessible resources and programs.
-      </p>
+      {/* Services Section */}
+      <section className="mb-5">
+        <h2 className="fw-bold text-center mb-4">📌 What We Offer</h2>
+        <div className="row text-center">
+          <div className="col-md-4 mb-3">
+            <div className="p-4 shadow rounded h-100">
+              <FaBook size={40} className="text-primary mb-3" />
+              <h5>Book Lending</h5>
+              <p>Borrow, reserve, and return thousands of titles across all genres.</p>
+            </div>
+          </div>
 
-      <h4>Contact Information</h4>
-      <p>Email: <strong>citylibrary@gmail.com</strong></p>
-      <p>Phone: <strong>0119852145</strong></p>
-      <p>Follow us on social media: <strong>@citylibraryofflineservice</strong></p>
+          <div className="col-md-4 mb-3">
+            <div className="p-4 shadow rounded h-100">
+              <FaLaptop size={40} className="text-success mb-3" />
+              <h5>Digital Resources</h5>
+              <p>Access eBooks, audiobooks, journals, and online courses 24/7.</p>
+            </div>
+          </div>
 
-      {/* Books Section */}
-      <h3 className="text-center mb-3 mt-5">Samples of Books Found at City Library</h3>
-      <div className="row justify-content-center mt-3">
-        {/* Book 1 */}
-        <div className="col-md-4 p-4">
-          <div className="card shadow h-100">
-            <img
-              src="images/download56.jpeg"
-              className="card-img-top"
-              alt="Bembea ya maisha"
-            />
-            <div className="card-body">
-              <h4 className="card-title">Bembea ya Maisha</h4>
-              <p className="card-text">
-                The play revolves around family struggles, illness, poverty, and
-                the changes between traditional and modern life.
-              </p>
-              <ul>
-                <li>Swahili play (setbook) for secondary school</li>
-                <li>Contains 76 pages</li>
-              </ul>
+          <div className="col-md-4 mb-3">
+            <div className="p-4 shadow rounded h-100">
+              <FaCalendarAlt size={40} className="text-warning mb-3" />
+              <h5>Events & Workshops</h5>
+              <p>Engaging programs, workshops, and cultural events for all ages.</p>
+            </div>
+          </div>
+
+          <div className="col-md-6 mb-3">
+            <div className="p-4 shadow rounded h-100">
+              <FaUsers size={40} className="text-danger mb-3" />
+              <h5>Community Spaces</h5>
+              <p>Study rooms, meeting halls, and collaborative spaces for the public.</p>
+            </div>
+          </div>
+
+          <div className="col-md-6 mb-3">
+            <div className="p-4 shadow rounded h-100">
+              <FaWifi size={40} className="text-info mb-3" />
+              <h5>Free Internet Access</h5>
+              <p>Enjoy free Wi-Fi, computers, and printing services in the library.</p>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Book 2 */}
-        <div className="col-md-4 p-4">
-          <div className="card shadow h-100">
-            <img
-              src="images/images34.jpeg"
-              className="card-img-top"
-              alt="Bookset.jss"
-            />
-            <div className="card-body">
-              <h4 className="card-title">Bookset.jss</h4>
-              <p className="card-text">
-                Helps students read fluently and improves their speaking skills.
-              </p>
-              <p>Contains 95 pages</p>
-            </div>
-          </div>
-        </div>
+      {/* Contact Info */}
+      <section className="contact-info mb-5 text-center">
+        <h2 className="fw-bold">📞 Contact Us</h2>
+        <p>Email: <strong>citylibrary@gmail.com</strong></p>
+        <p>Phone: <strong>0748522183</strong></p>
+        <p>Follow us: <strong>@citylibraryofflineservice</strong></p>
+      </section>
 
-        {/* Book 3 */}
-        <div className="col-md-4 p-4">
-          <div className="card shadow h-100">
-            <img
-              src="images/download1.jpeg"
-              className="card-img-top"
-              alt="The Samaritan"
-            />
-            <div className="card-body">
-              <h4 className="card-title">The Samaritan</h4>
-              <p className="card-text">
-                Discusses corrupt African leaders who are not ready to serve the people.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Gifts Section */}
-      <h3 className="mt-5">Library Gifts for Regular Visitors</h3>
-      <div className="row justify-content-center mt-3">
-        {/* Gift 1: Youths */}
-        <div className="col-md-4 p-4">
-          <div className="card shadow h-100">
-            <img src="images/youth.jpeg" alt="Gift for youths" className="card-img-top" />
-            <div className="card-body">
-              <h4 className="card-title">Gift for Youths</h4>
-              <p className="card-text">
-                A reward for any youth visiting the library continuously.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Gift 2: Aged */}
-        <div className="col-md-4 p-4">
-          <div className="card shadow h-100">
-            <img src="images/download.jpeg" alt="Gift for the aged" className="card-img-top" />
-            <div className="card-body">
-              <h4 className="card-title">Gift for the Aged</h4>
-              <p className="card-text">
-                A sample of gifts for the elderly.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Gift 3: Young Ones */}
-        <div className="col-md-4 p-4">
-          <div className="card shadow h-100">
-            <img src="images/3wing.jpeg" alt="Gifts for the young ones" className="card-img-top" />
-            <div className="card-body">
-              <h4 className="card-title">Gifts for the Young Ones</h4>
-              <p className="card-text">
-                A sample of gifts for young children visiting the library.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Free Internet Section */}
-      <h4 className="mt-5">Free Internet Access</h4>
-      <div className="col-md-4 p-3">
-        <div className="card shadow h-100">
-          <img src="images/internet.jpeg" alt="Free internet access" className="card-img-top" />
-          <div className="card-body">
-            <h4 className="card-title">Free Internet Access</h4>
-            <p>Available for all visitors.</p>
-          </div>
-        </div>
-      </div>
-
+      {/* Footer */}
       <Footer />
     </div>
   );
 };
 
-export default Secondcomponent;
+export default About;

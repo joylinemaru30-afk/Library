@@ -1,0 +1,76 @@
+.app-container {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+  }
+  
+  /* Section Styling */
+  .main-content section {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .main-content section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  }
+  
+  /* Section Headings */
+  .main-content h1 {
+    font-weight: 800;
+  }
+  
+  .main-content h2 {
+    font-weight: 700;
+    color: #0d6efd;
+    margin-bottom: 15px;
+  }
+  
+  /* List Items */
+  .main-content ul li {
+    margin-bottom: 10px;
+    font-size: 1rem;
+  }
+  
+  /* Icons in list */
+  .main-content ul li svg {
+    margin-right: 10px;
+  }
+  
+  /* Buttons */
+  .main-content .btn {
+    border-radius: 30px;
+    padding: 0.6rem 1.2rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .main-content .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Library Image */
+  .library-image img {
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s ease;
+  }
+  
+  .library-image img:hover {
+    transform: scale(1.03);
+  }
+  
+  /* Map */
+  .map-section iframe {
+    border-radius: 12px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .library-image img {
+      width: 100%;
+    }
+  }
+  

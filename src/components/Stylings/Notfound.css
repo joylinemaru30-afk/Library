@@ -1,0 +1,104 @@
+/* Container styling */
+.notfound-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Big 404 text */
+  .notfound-404 {
+    font-size: 8rem;
+    font-weight: 900;
+    color: #ffc107; /* same as text-warning */
+    text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.15);
+    letter-spacing: 5px;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Headline + paragraph */
+  .notfound-container h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #343a40;
+  }
+  
+  .notfound-container p {
+    max-width: 600px;
+    font-size: 1rem;
+    color: #6c757d;
+  }
+  
+  /* Search bar */
+  .notfound-container input[type="text"] {
+    border-radius: 30px;
+    padding: 0.75rem 1rem;
+    border: 1px solid #dee2e6;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .notfound-container input[type="text"]:focus {
+    outline: none;
+    border-color: #0d6efd;
+    box-shadow: 0 0 8px rgba(13, 110, 253, 0.3);
+  }
+  
+  /* Buttons */
+  .notfound-container .btn {
+    padding: 0.6rem 1.2rem;
+    font-weight: 600;
+    border-radius: 30px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .notfound-container .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Quick access section */
+  .quick-links {
+    margin-top: 2rem;
+  }
+  
+  .quick-links h5 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #495057;
+  }
+  
+  /* Cards for Help & Contact */
+  .quick-links .card {
+    border-radius: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    padding: 1rem;
+    background: #fff;
+  }
+  
+  .quick-links .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .quick-links .card h6 {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: #212529;
+  }
+  
+  .quick-links .card p {
+    font-size: 0.85rem;
+    color: #6c757d;
+  }
+  
+  /* Redirect timer */
+  .notfound-container .mt-4 {
+    margin-top: 2rem !important;
+    font-size: 0.9rem;
+    color: #6c757d;
+  }
+  

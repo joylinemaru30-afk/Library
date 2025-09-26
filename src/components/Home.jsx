@@ -35,6 +35,16 @@ const HomePage = () => {
             <h3>💻 Digital Resources</h3>
             <p>Access eBooks, journals, and online courses.</p>
           </Link>
+
+          <Link to="/borrow-book" className="card borrow-card">
+            <h3>📖 Borrow a Book</h3>
+            <p>Search and borrow books directly from the library.</p>
+          </Link>
+
+          <Link to="/sell-book" className="card sell-card">
+            <h3>💰 Sell a Book</h3>
+            <p>List your books for sale or donation to the library.</p>
+          </Link>
         </section>
 
         {/* Library Features */}
@@ -48,6 +58,23 @@ const HomePage = () => {
             <li>✅ Community Spaces & Study Zones</li>
             <li>✅ Technology Services: Wi-Fi, PCs, printing</li>
           </ul>
+        </section>
+
+        {/* Support Section */}
+        <section className="support">
+          <h2>Need Help?</h2>
+          <div className="support-cards">
+            <Link to="/help" className="card help-card">
+              <h3>🆘 Help Center</h3>
+              <p>Find answers to frequently asked questions.</p>
+            </Link>
+
+            <Link to="/contact" className="card contact-card">
+              <h3>📩 Contact Us</h3>
+              <p>Reach out to our team for assistance.</p>
+              <p>Phone: 0748522183</p>
+            </Link>
+          </div>
         </section>
       </div>
 

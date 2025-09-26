@@ -1,64 +1,66 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    
-    <nav className='navbar navbar-expand-md navbar-ligth bg-ligth shadow-sm mt-1'>
-<Link to="/"className="navbar-brand fw-bold m-2">City<span className="text-danger">Library</span></Link>
+    <nav className="navbar navbar-expand-md navbar-light bg-light shadow-sm mt-1 px-3">
+      {/* Brand */}
+      <Link to="/" className="navbar-brand fw-bold m-2">
+        City<span className="text-danger">Library</span>
+      </Link>
 
-<button className="navbar-toggler"
-type='button'
-data-bs-toggle="collapse"
-data-bs-target="#navbarcontents"
-> 
-<span className='navbar-toggler-icon'></span>
-</button>
-<div id ="navbarcontents" className='collapse navbar-collapse'>
-<ul className='navbar-nav ms auto'>
-<li className='nav-item'>
-            <b><Link to="/" className='nav-link'>Home</Link></b>
+      {/* Toggler */}
+      <button
+        className="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarcontents"
+      >
+        <span className="navbar-toggler-icon"></span>
+      </button>
 
-        </li>
+      {/* Navbar Content */}
+      <div id="navbarcontents" className="collapse navbar-collapse">
+        {/* Left-aligned items */}
+        <ul className="navbar-nav">
+          <li className="nav-item">
+            <Link to="/" className="nav-link fw-bold">
+              Home
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/about" className="nav-link fw-bold">
+              About
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/location" className="nav-link fw-bold">
+              Location
+            </Link>
+          </li>
+        </ul>
 
-        <li className='nav-item'>
-            <b><Link to="/about" className='nav-link'>about</Link></b>
-
-        </li>
-
-        <li className='nav-item'>
-            <b><Link to="/signin" className='nav-link'>Signin</Link></b>
-
-        </li>
-
-        <li className='nav-item'>
-            <b><Link to="/lend" className='nav-link'>lending</Link></b>
-
-        </li>
-
-        <li className='nav-item'>
-            <b><Link to="/location" className='nav-link'>location</Link></b>
-
-        </li>
-        <li className='nav-item'>
-            <b><Link to="/borrow" className='nav-link'>Borrow</Link></b>
-
-        </li>
-
-
-
-
-
-
-       
-
-    </ul>
-
-
-</div>
-
+        {/* Right-aligned items */}
+        <ul className="navbar-nav ms-auto">
+          <li className="nav-item">
+            <Link to="/borrow" className="nav-link fw-bold">
+              Borrow
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/lend" className="nav-link fw-bold">
+              Lending
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/signin" className="nav-link fw-bold btn btn-outline-success px-3 ms-2">
+              Sign In
+            </Link>
+          </li>
+        </ul>
+      </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

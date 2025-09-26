@@ -1,6 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router,Route,Routes,Link } from 'react-router-dom';
 import'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.min.js'
 import Secondcomponent from './components/Secondcomponent';
 import Notfound from './components/Notfound';
 import Signincomponent from './components/Signincomponent';

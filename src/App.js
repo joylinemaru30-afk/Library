@@ -8,9 +8,10 @@ import Signincomponent from './components/Signincomponent';
 import Navbar from './components/Navbar'; 
 import Lending from './components/Lending';
 import Location from './components/Location';
-import { BsBoxArrowDownLeft } from 'react-icons/bs';
 import Dashboard from './components/Borrowed';
 import Home from './components/Home';
+import { SellBook } from 'react-icons/gi';
+import Sellbook from './components/Sellbook';
 
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
           <Route path="/lend"element={<Lending/>}/>
           <Route path="/location"element={<Location/>}/>
           <Route path="/borrow" element={<Dashboard/>}/>
-          
+          <Route path="/sell" element={<Sellbook/>}/>
           
 
         </Routes>

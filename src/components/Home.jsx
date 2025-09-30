@@ -41,7 +41,7 @@ const HomePage = () => {
             <p>Search and borrow books directly from the library.</p>
           </Link>
 
-          <Link to="/sell-book" className="card sell-card">
+          <Link to="/sell" className="card sell-card">
             <h3>💰 Sell a Book</h3>
             <p>List your books for sale or donation to the library.</p>
           </Link>

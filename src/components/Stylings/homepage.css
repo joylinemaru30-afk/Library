@@ -1,132 +1,110 @@
-/* General Page */
+/* Main app container */
 .app-container {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f8f9fa;
-  color: #333;
+  display: flex;
+  flex-direction: column; /* make it a column layout */
+  min-height: 100vh; /* full viewport height */
+  position: relative;
 }
 
-.main-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+/* Content on the left / main page */
+.content-wrapper {
+  flex: 1; /* take available space, push footer down */
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
-/* Hero Section */
-.hero {
-  text-align: center;
-  padding: 60px 20px;
-  background: linear-gradient(to right, #4facfe, #00f2fe);
-  color: #fff;
+/* Card styling */
+.card {
+  background: #fff;
+  padding: 2rem;
   border-radius: 12px;
-  margin-bottom: 40px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.1);
 }
 
-.hero h1 {
-  font-size: 3rem;
-  margin-bottom: 15px;
+/* Hero buttons */
+.hero-buttons .btn {
+  margin: 0.5rem;
 }
 
-.hero p {
-  font-size: 1.2rem;
-  font-weight: 500;
+/* Chatbot on right */
+.chatbot-container {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 1000;
 }
 
-/* Quick Access & Feature Cards */
-.quick-access, .support-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  margin-bottom: 50px;
+.chat-toggle-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 1rem;
+  border-radius: 50%;
+  font-size: 1.3rem;
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
 }
 
-.quick-access .card,
-.support-cards .card {
-  background-color: #fff;
-  border-radius: 12px;
-  padding: 25px 20px;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  text-decoration: none;
-  color: inherit;
-}
-
-.quick-access .card:hover,
-.support-cards .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-}
-
-.quick-access .card h3,
-.support-cards .card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-}
-
-.quick-access .card p,
-.support-cards .card p {
-  font-size: 0.95rem;
-  color: #555;
-}
-
-/* Borrow & Sell Cards with distinct colors */
-.borrow-card {
-  background-color: #d1e7dd;
-  color: #0f5132;
-}
-
-.sell-card {
-  background-color: #fff3cd;
-  color: #664d03;
-}
-
-/* Help & Contact Cards */
-.help-card {
-  background-color: #cff4fc;
-  color: #055160;
-}
-
-.contact-card {
-  background-color: #fde2e2;
-  color: #842029;
-}
-
-/* Library Features Section */
-.features {
-  background-color: #fff;
-  padding: 40px 25px;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-  margin-bottom: 50px;
-}
-
-.features h2 {
-  text-align: center;
-  margin-bottom: 25px;
-  color: #007bff;
-}
-
-.features ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-.features ul li {
-  padding: 10px 0;
-  font-size: 1rem;
-  position: relative;
-  padding-left: 30px;
-  margin-bottom: 8px;
-}
-
-.features ul li::before {
-  content: '✅';
+.chat-window {
+  width: 320px;
+  max-height: 500px;
   position: absolute;
-  left: 0;
+  bottom: 70px;
+  right: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: #f5f8ff;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
 }
 
-/* Footer Override if Needed */
+/* Blue theme */
+.blue-theme .chat-header {
+  background-color: #007bff;
+  color: #fff;
+  padding: 1rem;
+}
+
+.chat-body {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.chat-msg.user {
+  text-align: right;
+  margin-bottom: 0.5rem;
+  background: #cce5ff;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+}
+
+.chat-msg.bot {
+  text-align: left;
+  margin-bottom: 0.5rem;
+  background: #e6f0ff;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+}
+
+.chat-input-section {
+  display: flex;
+  padding: 0.5rem;
+  gap: 0.5rem;
+  border-top: 1px solid #ddd;
+}
+
+.chat-input-section input {
+  flex: 1;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+/* Footer fix */
 footer {
-  margin-top: 50px;
+  flex-shrink: 0; /* prevent shrinking */
 }

@@ -12,6 +12,8 @@ import Dashboard from './components/Borrowed';
 import Home from './components/Home';
 import { SellBook } from 'react-icons/gi';
 import Sellbook from './components/Sellbook';
+import BrowsePage from './components/Browse';
+import EventsPage from './components/Event';
 
 
 function App() {
@@ -30,6 +32,9 @@ function App() {
           <Route path="/location"element={<Location/>}/>
           <Route path="/borrow" element={<Dashboard/>}/>
           <Route path="/sell" element={<Sellbook/>}/>
+          <Route path='/browse' element={<BrowsePage/>}/>
+          <Route path='/events' element={<EventsPage/>}/>
+
           
 
         </Routes>

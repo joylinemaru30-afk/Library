@@ -66,7 +66,7 @@ const Addproduct = () => {
       <div className='col-md-6 p-4 card shadow'>
 
       
-        <h1> Addproduct page</h1>
+        <h1> Add a book to sell</h1>
 
 
         {loading && <Loader />}
@@ -76,7 +76,7 @@ const Addproduct = () => {
         <form onSubmit={submit}>
           <input type="text" 
           className='form-control'
-          placeholder='enter your productname here'
+          placeholder='Enter your book name here'
           value={productname}
           onChange={(e)=>setproductname(e.target.value)}
 
@@ -86,7 +86,7 @@ const Addproduct = () => {
           <br />
           <input type="text" 
           className='form-control'
-          placeholder='enter your product description here'
+          placeholder='Enter your book description here'
           value={productdescription}
           onChange={(e)=>setproductdescription(e.target.value)}
           />
@@ -94,14 +94,14 @@ const Addproduct = () => {
           <br />
           <input type="number" 
           className='form-control'
-          placeholder='enter your product cost here'
+          placeholder='Enter your book price here'
           value={productcost}
           onChange={(e)=>setproductcost(e.target.value)}
           
           />
           {/* {productcost} */}
           <br />
-          <label>productphoto</label> <br />
+          <label>Book cover page</label> <br />
           <input type="file" 
           className='form-control'
           accept='image/*'

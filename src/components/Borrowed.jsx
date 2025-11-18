@@ -32,7 +32,7 @@ const BookLending = () => {
   return (
     <div className="app-container">
       <div className="main-content">
-        <h2>📚 Book Lending Services</h2>
+        <h2 className="text-primary">📚 Book Lending Services</h2>
         <table className="lending-table">
           <thead>
             <tr>

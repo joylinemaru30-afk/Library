@@ -14,6 +14,7 @@ import { SellBook } from 'react-icons/gi';
 import Sellbook from './components/Sellbook';
 import BrowsePage from './components/Browse';
 import EventsPage from './components/Event';
+import Signupcomponent from './components/Signup';
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           <Route path="/sell" element={<Sellbook/>}/>
           <Route path='/browse' element={<BrowsePage/>}/>
           <Route path='/events' element={<EventsPage/>}/>
+          <Route path='/signup'element={<Signupcomponent/>}/>
 
           
 

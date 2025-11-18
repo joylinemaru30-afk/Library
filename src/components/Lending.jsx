@@ -34,7 +34,8 @@ const BookLending = () => {
   };
 
   return (
-    <div className="lending-container">
+    <div>
+      <div className="lending-container">
       <h2>📚 Book Lending Services</h2>
 
       <table className="lending-table">
@@ -92,8 +93,10 @@ const BookLending = () => {
         </tbody>
       </table>
 
-      {/* Bind Footer */}
-      <Footer />
+     
+    </div>
+     {/* Bind Footer */}
+     <Footer />
     </div>
   );
 };

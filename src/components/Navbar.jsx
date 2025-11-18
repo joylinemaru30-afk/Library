@@ -58,6 +58,11 @@ const Navbar = () => {
             </Link>
           </li>
           <li className="nav-item">
+            <Link to="/signup" className="nav-link fw-bold btn btn-outline-success px-3 ms-2">
+              Sign up
+            </Link>
+          </li>
+          <li className="nav-item">
             <Link to="/sell" className="nav-link fw-bold btn btn-outline-success px-3 ms-2">
               sellbook
             </Link>

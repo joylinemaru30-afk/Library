@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "./Footer";
 import "./Stylings/homepage.css";
+import "./Stylings/Chatbot.css";
+import axios from "axios";
 
 const HomePage = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
@@ -12,6 +14,49 @@ const HomePage = () => {
   const recognitionRef = useRef(null);
   const messagesRef = useRef(null);
 
+    // Declare your hooks
+    const[products,setproduct]=useState([]);
+    const[loading,setloading]=useState(false);
+    const[error,seterror]=useState("");
+  
+  
+    const navigate=useNavigate()
+  
+    console.log(products)
+
+     // declare the image url and store it inside of a variable
+  const img_url="https://joykosgei.pythonanywhere.com/static/images/"
+
+
+  // create a function that will automatically be called when the home componenet is accessed
+  const fetchproducts=async()=>{
+    // update the loading hook with message
+    setloading(true)
+    try{
+      const response =await axios.get("https://joykosgei.pythonanywhere.com/api/getproducts")
+
+      // update the products hook with the products fetched from the API end point
+      setproduct(response.data)
+
+      // stop loading
+      setloading(false)
+
+    }
+    catch (error){
+
+      setloading(false)
+      seterror("there was an error encountered...please try again later...")
+    }
+ 
+  }
+
+
+    // useEffect hook:
+
+    useEffect(()=>{
+      fetchproducts()
+    },[])
+
   const mkId = () => `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
 
   const getBotResponse = (text) => {
@@ -20,10 +65,10 @@ const HomePage = () => {
     if (/hours|open|opening/.test(text)) return "We are open Mon–Sat, 8:00 AM — 6:00 PM.";
     if (/location|where|address/.test(text)) return "We're at City Center, Building 3, Main Street.";
     if (/contact|phone|email/.test(text)) return "Call us at 0748522183 or email citylibrary@example.com.";
-    if (/borrow|loan/.test(text)) return "To borrow a book, visit the Borrow Book page or ask me about a specific title.";
-    if (/event|workshop|program/.test(text)) return "Check upcoming events on the Events page.";
-    if (/membership|card|register/.test(text)) return "You can register for a library card at the Help Center or online.";
-    return "Thanks for your message! A librarian will assist you shortly.";
+    if (/borrow|loan/.test(text)) return "You can borrow books from the Borrow Book page or ask me about a title!";
+    if (/event|workshop|program/.test(text)) return "Check the latest events on the Events page.";
+    if (/membership|card|register/.test(text)) return "You can register for a library card at the Help Center.";
+    return "Thanks for your message! A librarian will respond soon.";
   };
 
   const speak = (text) => {
@@ -31,30 +76,32 @@ const HomePage = () => {
     const utter = new SpeechSynthesisUtterance(text);
     utter.rate = 1;
     utter.pitch = 1;
-    window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
   };
 
   useEffect(() => {
     if (messagesRef.current) {
-      messagesRef.current.scrollTop = messagesRef.current.scrollHeight + 200;
+      messagesRef.current.scrollTop =
+        messagesRef.current.scrollHeight + 200;
     }
   }, [messages, isTyping]);
 
   useEffect(() => {
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition || null;
-    if (!SpeechRecognition) return;
+    const SpeechRec =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
 
-    const recog = new SpeechRecognition();
+    if (!SpeechRec) return;
+
+    const recog = new SpeechRec();
     recog.lang = "en-US";
     recog.interimResults = false;
-    recog.maxAlternatives = 1;
 
     recog.onresult = (e) => {
       const transcript = e.results[0][0].transcript;
       setInput(transcript);
       setIsListening(false);
     };
+
     recog.onerror = () => setIsListening(false);
     recog.onend = () => setIsListening(false);
 
@@ -64,17 +111,20 @@ const HomePage = () => {
   const toggleChat = () => {
     setIsChatOpen((prev) => {
       const next = !prev;
+
+      // Send welcome message only once
       if (next && messages.length === 0) {
         setTimeout(() => {
           const welcome = {
             id: mkId(),
             sender: "bot",
-            text: "Hello! I'm the City Library assistant — ask about hours, borrowing, events, or membership."
+            text: "Hello! I'm your library assistant. Ask me anything about hours, books, or events!",
           };
           setMessages([welcome]);
           speak(welcome.text);
         }, 300);
       }
+
       return next;
     });
   };
@@ -88,7 +138,9 @@ const HomePage = () => {
     setIsTyping(true);
 
     setTimeout(() => {
-      const botMsg = { id: mkId(), sender: "bot", text: getBotResponse(userMsg.text) };
+      const botText = getBotResponse(userMsg.text);
+      const botMsg = { id: mkId(), sender: "bot", text: botText };
+
       setMessages((prev) => [...prev, botMsg]);
       speak(botMsg.text);
       setIsTyping(false);
@@ -97,10 +149,12 @@ const HomePage = () => {
 
   const toggleListening = () => {
     const recog = recognitionRef.current;
+
     if (!recog) {
       alert("Speech recognition is not supported in this browser.");
       return;
     }
+
     if (isListening) {
       recog.stop();
       setIsListening(false);
@@ -117,89 +171,95 @@ const HomePage = () => {
   return (
     <div className="app-container">
 
+<div className="row">
+      <div className="col-md-4"></div>
+      <div className="col-md-4">{loading} 
+        {error && <p className="text-danger">{error}</p>}
+</div>
+      <div className="col-md-4"></div>
+
+        
+      </div>
+
       {/* Main Content */}
       <div className="content-wrapper">
-        {/* Hero Section */}
         <section className="hero card">
           <h1>Welcome to City Library</h1>
           <p>Your hub for books, events, and digital resources!</p>
+
           <div className="hero-buttons">
             <Link to="/browse" className="btn primary-btn">Browse Books</Link>
             <Link to="/events" className="btn secondary-btn">Upcoming Events</Link>
           </div>
         </section>
-
-        {/* Features Section */}
-        <section className="features card">
-          <h2>Library Features</h2>
-          <div className="features-grid">
-            <div className="feature-card">📚 Book Lending (Physical & Digital)</div>
-            <div className="feature-card">🖥️ Technology Services (Wi-Fi, PCs, Printing)</div>
-            <div className="feature-card">🏫 Study Zones & Community Spaces</div>
-            <div className="feature-card">🎨 Events & Workshops</div>
-            <div className="feature-card">📖 E-books, Audiobooks & PDFs</div>
-            <div className="feature-card">📝 Membership & Personal Dashboard</div>
-          </div>
-        </section>
-
-        {/* Newsletter Signup */}
-        <section className="newsletter card">
-          <h2>Stay Updated</h2>
-          <p>Subscribe for events, new books, and announcements.</p>
-          <div className="newsletter-form">
-            <input type="email" placeholder="Your email address" />
-            <button className="btn primary-btn">Subscribe</button>
-          </div>
-        </section>
-
-        {/* Support Section */}
-        <section className="support card">
-          <h2>Need Help?</h2>
-          <div className="support-cards">
-            <Link to="/help" className="card help-card">
-              <h3>Help Center</h3>
-              <p>Find answers to frequently asked questions.</p>
-            </Link>
-            <Link to="/contact" className="card contact-card">
-              <h3>Contact Us</h3>
-              <p>Reach out to our team for assistance.</p>
-              <p>Phone: 0748522183</p>
-            </Link>
-          </div>
-        </section>
       </div>
 
-      {/* Chatbot on Right */}
-      <div className={`chatbot-container ${isChatOpen ? "open" : ""}`}>
-        <button className="chat-toggle-btn" onClick={toggleChat}>💬</button>
-        {isChatOpen && (
-          <div className="chat-window blue-theme">
-            <div className="chat-header">
-              <h4>Library Chatbot</h4>
-              <button className="close-btn" onClick={toggleChat}>×</button>
-            </div>
-            <div className="chat-body" ref={messagesRef}>
-              {messages.map((m) => (
-                <div key={m.id} className={`chat-msg ${m.sender}`}>
-                  {m.text}
-                </div>
-              ))}
-              {isTyping && <div className="chat-msg bot typing">Librarian is typing...</div>}
-            </div>
-            <div className="chat-input-section">
-              <input
-                type="text"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                placeholder="Type your message..."
-                onKeyDown={(e) => { if (e.key === "Enter") handleSend(); }}
-              />
-              <button className="send-btn" onClick={handleSend}>Send</button>
-              <button className="mic-btn" onClick={toggleListening}>{isListening ? "🎙️" : "🕵️‍♀️"}</button>
-            </div>
+      <div className='row '>
+      {products.map((product,index)=>(
+      <div className='col-md-3 mb-4'>
+        <div className='card shadow h -100'>
+          <img src={img_url+product.product_photo} alt="product image" className='card-img product
+          _img mt-3' />
+        <div className="cardbody">
+          <h5>{product.product_name}</h5>
+          <p className='text-dark'>{product.product_description.slice(0,50)}...</p>
+          <b className="text-warning">{product.product_cost}</b> <br />
+
+           <button className=" btn btn-success mt-2" onClick={()=> navigate("/mpesapayment",{state:{product}})} >Buy now</button>
+        </div>
+    </div>
+    </div>
+    ))}
+    </div>
+
+      {/* Chatbot Button */}
+      <button className="chat-toggle-btn" onClick={toggleChat}>
+        💬
+      </button>
+
+      {/* Chat Window */}
+      {isChatOpen && (
+        <div className="chat-window">
+
+          {/* Header */}
+          <div className="chat-header">
+            <span>Library Assistant</span>
+            <button onClick={toggleChat}>✖</button>
           </div>
-        )}
-      </div>
+
+          {/* Messages */}
+          <div className="chat-messages" ref={messagesRef}>
+            {messages.map((msg) => (
+              <div
+                key={msg.id}
+                className={`chat-bubble ${msg.sender === "user" ? "user-msg" : "bot-msg"}`}
+              >
+                {msg.text}
+              </div>
+            ))}
+
+            {isTyping && <div className="typing-indicator">Assistant is typing...</div>}
+          </div>
+
+          {/* Input */}
+          <div className="chat-input-area">
+            <input
+              type="text"
+              placeholder="Type a message..."
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && handleSend()}
+            />
+
+            <button className="mic-btn" onClick={toggleListening}>
+              {isListening ? "🎤..." : "🎤"}
+            </button>
+
+            <button className="send-btn" onClick={handleSend}>➤</button>
+          </div>
+
+        </div>
+      )}
 
       <Footer />
     </div>

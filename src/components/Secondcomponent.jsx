@@ -6,7 +6,8 @@ import "./Stylings/secondcomponent.css";
 
 const About = () => {
   return (
-    <div className="about-page container mt-5">
+    <div>
+      <div className="about-page container mt-5">
       {/* Hero Section */}
       <section className="text-center mb-5">
         <h1 className="fw-bold display-4 text-primary">📖 About City Library</h1>
@@ -102,8 +103,10 @@ const About = () => {
         <p>Follow us: <strong>@citylibraryofflineservice</strong></p>
       </section>
 
-      {/* Footer */}
-      <Footer />
+     
+    </div>
+     {/* Footer */}
+     <Footer />
     </div>
   );
 };

@@ -6,11 +6,15 @@ import "./Stylings/Location.css";
 const Location = () => {
   return (
     <div className="app-container">
-      <div className="main-content container mt-5">
-        <h1 className="text-center mb-4 text-primary">📍 Find City Library</h1>
+      <div className="location-wrapper">
+  <div className="main-content container mt-5">
+    <h1 className="text-center mb-4 text-primary">📍 Find City Library</h1>
 
-        {/* Directions Section */}
-        <section className="directions mb-5 p-4 shadow rounded bg-light">
+    <div className="row g-4 text-dark">
+
+      {/* Column 1 — Directions */}
+      <div className="col-md-4">
+        <section className="directions p-4 shadow rounded bg-light">
           <h2 className="fw-bold mb-3">How to Reach Us</h2>
           <ul className="list-unstyled">
             <li className="mb-2 d-flex align-items-center">
@@ -27,7 +31,6 @@ const Location = () => {
             </li>
           </ul>
 
-          {/* Quick Action Buttons */}
           <div className="d-flex gap-3 mt-3 flex-wrap">
             <a
               href="https://www.google.com/maps/dir/?api=1&destination=City+Library"
@@ -42,9 +45,11 @@ const Location = () => {
             </a>
           </div>
         </section>
+      </div>
 
-        {/* Opening Hours */}
-        <section className="opening-hours mb-5 p-4 shadow rounded bg-light">
+      {/* Column 2 — Opening Hours */}
+      <div className="col-md-4">
+        <section className="opening-hours p-4 shadow rounded bg-light h-100">
           <h2 className="fw-bold mb-3">
             <FaClock className="me-2 text-warning" /> Opening Hours
           </h2>
@@ -54,14 +59,22 @@ const Location = () => {
             <li>Sunday: 10:00 AM - 4:00 PM</li>
           </ul>
         </section>
+      </div>
 
-        {/* Contact Info */}
-        <section className="contact-info mb-5 p-4 shadow rounded bg-light">
+      {/* Column 3 — Contact Info */}
+      <div className="col-md-4">
+        <section className="contact-info p-4 shadow rounded bg-light h-100">
           <h2 className="fw-bold mb-3">Contact Us</h2>
           <p>Email: citylibrary@gmail.com</p>
           <p>Phone: 0748522183</p>
           <p>Google account: @citylibraryofflineservice</p>
         </section>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 
         {/* Library Image */}
         <section className="library-image text-center mb-5">
@@ -73,8 +86,8 @@ const Location = () => {
           />
         </section>
 
-        {/* Map */}
-        <section className="map-section mb-5">
+          {/* Map */}
+          <section className="map-section mb-5">
           <iframe
             title="City Library Map"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3978.123456789!2d32.567890123!3d0.123456789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177db123456789ab%3A0x123456789abcdef!2sCity%20Library!5e0!3m2!1sen!2s!4v1690000000000!5m2!1sen!2s"
@@ -85,7 +98,6 @@ const Location = () => {
             loading="lazy"
           ></iframe>
         </section>
-      </div>
 
       <Footer />
     </div>

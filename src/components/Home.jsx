@@ -189,7 +189,7 @@ const HomePage = () => {
 
           <div className="hero-buttons">
             <Link to="/browse" className="btn primary-btn">Browse Books</Link>
-            <Link to="/events" className="btn secondary-btn">Upcoming Events</Link>
+            <Link to="/events" className="btn dark-btn">Upcoming Events</Link>
           </div>
         </section>
       </div>
@@ -198,8 +198,8 @@ const HomePage = () => {
       {products.map((product,index)=>(
       <div className='col-md-3 mb-4'>
         <div className='card shadow h -100'>
-          <img src={img_url+product.product_photo} alt="product image" className='card-img product
-          _img mt-3' />
+          <img src={img_url+product.product_photo}alt="product photo"className='card-img product
+          _img mt-3'/>
         <div className="cardbody">
           <h5>{product.product_name}</h5>
           <p className='text-dark'>{product.product_description.slice(0,50)}...</p>

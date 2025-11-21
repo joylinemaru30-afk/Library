@@ -1,7 +1,7 @@
 import React from "react";
 import { FaBook, FaLaptop, FaUsers, FaWifi, FaCalendarAlt } from "react-icons/fa";
 import Footer from "./Footer";
-import "./Stylings/secondcomponent.css";
+import "./Stylings/About.css";
 
 
 const About = () => {

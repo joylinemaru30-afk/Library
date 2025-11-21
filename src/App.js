@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter as Router,Route,Routes,Link } from 'react-router-dom';
 import'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
-import Secondcomponent from './components/Secondcomponent';
+import Secondcomponent from './components/About';
 import Notfound from './components/Notfound';
 import Signincomponent from './components/Signincomponent';
 import Navbar from './components/Navbar'; 
@@ -36,6 +36,7 @@ function App() {
           <Route path='/browse' element={<BrowsePage/>}/>
           <Route path='/events' element={<EventsPage/>}/>
           <Route path='/signup'element={<Signupcomponent/>}/>
+         
 
           
 

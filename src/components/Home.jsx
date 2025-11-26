@@ -13,6 +13,7 @@ const HomePage = () => {
   const [isListening, setIsListening] = useState(false);
   const recognitionRef = useRef(null);
   const messagesRef = useRef(null);
+  const [search, setSearch] = useState("");
 
   const [products, setproduct] = useState([]);
   const [loading, setloading] = useState(false);
@@ -35,6 +36,12 @@ const HomePage = () => {
       seterror("There was an error encountered... Please try again later.");
     }
   };
+
+    // Filter based on search
+    const filtered_products = products.filter((item) =>
+      item.product_name.toLowerCase().includes(search.toLowerCase()) ||
+      item.product_description.toLowerCase().includes(search.toLowerCase())
+    );
 
   useEffect(() => {
     fetchproducts();
@@ -176,9 +183,23 @@ const HomePage = () => {
         </section>
       </div>
 
+      <h3 className="mt-4 text-danger">Available Books</h3>
+
+      <div className="row justify-content-center mt-3 mb-3 \">
+        <input
+          className="form-control w-50"
+          type="search"
+          placeholder="Search for a book..."
+          value={search}
+          onChange={(e) => {
+            setSearch(e.target.value);
+          }}
+        />
+      </div>
+
       {/* Product Section */}
       <div className="row">
-        {products.map((product, index) => (
+        {filtered_products.map((product, index) => (
           <div className="col-md-3 mb-4" key={product.id || index}>
             <div className="card shadow h-100">
 

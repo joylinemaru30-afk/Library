@@ -8,13 +8,10 @@ import Signincomponent from './components/Signincomponent';
 import Navbar from './components/Navbar'; 
 import Lending from './components/Lending';
 import Location from './components/Location';
-import Dashboard from './components/Borrowed';
 import Home from './components/Home';
-import { SellBook } from 'react-icons/gi';
 import Sellbook from './components/Sellbook';
-import BrowsePage from './components/Browse';
-import EventsPage from './components/Event';
 import Signupcomponent from './components/Signup';
+import Mpesapayment from './components/Mpesapayment';
 
 
 function App() {
@@ -31,10 +28,8 @@ function App() {
           {/* <Route path="/navbar" element={<Navbar/>}/> */}
           <Route path="/lend"element={<Lending/>}/>
           <Route path="/location"element={<Location/>}/>
-          <Route path="/borrow" element={<Dashboard/>}/>
           <Route path="/sell" element={<Sellbook/>}/>
-          <Route path='/browse' element={<BrowsePage/>}/>
-          <Route path='/events' element={<EventsPage/>}/>
+          <Route path="/mpesapayment"element={<Mpesapayment/>}/>
           <Route path='/signup'element={<Signupcomponent/>}/>
          
 

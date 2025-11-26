@@ -14,60 +14,49 @@ const HomePage = () => {
   const recognitionRef = useRef(null);
   const messagesRef = useRef(null);
 
-    // Declare your hooks
-    const[products,setproduct]=useState([]);
-    const[loading,setloading]=useState(false);
-    const[error,seterror]=useState("");
-  
-  
-    const navigate=useNavigate()
-  
-    console.log(products)
+  const [products, setproduct] = useState([]);
+  const [loading, setloading] = useState(false);
+  const [error, seterror] = useState("");
 
-     // declare the image url and store it inside of a variable
-  const img_url="https://joykosgei.pythonanywhere.com/static/images/"
+  const navigate = useNavigate();
 
+  const img_url = "https://joykosgei.pythonanywhere.com/static/images/";
 
-  // create a function that will automatically be called when the home componenet is accessed
-  const fetchproducts=async()=>{
-    // update the loading hook with message
-    setloading(true)
-    try{
-      const response =await axios.get("https://joykosgei.pythonanywhere.com/api/getproducts")
-
-      // update the products hook with the products fetched from the API end point
-      setproduct(response.data)
-
-      // stop loading
-      setloading(false)
-
+  const fetchproducts = async () => {
+    setloading(true);
+    try {
+      const response = await axios.get(
+        "https://joykosgei.pythonanywhere.com/api/getproducts"
+      );
+      setproduct(response.data);
+      setloading(false);
+    } catch (error) {
+      setloading(false);
+      seterror("There was an error encountered... Please try again later.");
     }
-    catch (error){
+  };
 
-      setloading(false)
-      seterror("there was an error encountered...please try again later...")
-    }
- 
-  }
-
-
-    // useEffect hook:
-
-    useEffect(()=>{
-      fetchproducts()
-    },[])
+  useEffect(() => {
+    fetchproducts();
+  }, []);
 
   const mkId = () => `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
 
   const getBotResponse = (text) => {
     text = text.toLowerCase();
     if (/hello|hi|hey/.test(text)) return "Hello! How can I help you today?";
-    if (/hours|open|opening/.test(text)) return "We are open Mon–Sat, 8:00 AM — 6:00 PM.";
-    if (/location|where|address/.test(text)) return "We're at City Center, Building 3, Main Street.";
-    if (/contact|phone|email/.test(text)) return "Call us at 0748522183 or email citylibrary@example.com.";
-    if (/borrow|loan/.test(text)) return "You can borrow books from the Borrow Book page or ask me about a title!";
-    if (/event|workshop|program/.test(text)) return "Check the latest events on the Events page.";
-    if (/membership|card|register/.test(text)) return "You can register for a library card at the Help Center.";
+    if (/hours|open|opening/.test(text))
+      return "We are open Mon–Sat, 8:00 AM — 6:00 PM.";
+    if (/location|where|address/.test(text))
+      return "We're at City Center, Building 3, Main Street.";
+    if (/contact|phone|email/.test(text))
+      return "Call us at 0748522183 or email citylibrary@example.com.";
+    if (/borrow|loan/.test(text))
+      return "You can borrow books from the Borrow Book page or ask me about a title!";
+    if (/event|workshop|program/.test(text))
+      return "Check the latest events on the Events page.";
+    if (/membership|card|register/.test(text))
+      return "You can register for a library card at the Help Center.";
     return "Thanks for your message! A librarian will respond soon.";
   };
 
@@ -112,7 +101,6 @@ const HomePage = () => {
     setIsChatOpen((prev) => {
       const next = !prev;
 
-      // Send welcome message only once
       if (next && messages.length === 0) {
         setTimeout(() => {
           const welcome = {
@@ -140,7 +128,6 @@ const HomePage = () => {
     setTimeout(() => {
       const botText = getBotResponse(userMsg.text);
       const botMsg = { id: mkId(), sender: "bot", text: botText };
-
       setMessages((prev) => [...prev, botMsg]);
       speak(botMsg.text);
       setIsTyping(false);
@@ -171,46 +158,59 @@ const HomePage = () => {
   return (
     <div className="app-container">
 
-<div className="row">
-      <div className="col-md-4"></div>
-      <div className="col-md-4">{loading} 
-        {error && <p className="text-danger">{error}</p>}
-</div>
-      <div className="col-md-4"></div>
-
-        
+      {/* Loading / Error */}
+      <div className="row">
+        <div className="col-md-4"></div>
+        <div className="col-md-4">
+          {loading && <p>Loading products...</p>}
+          {error && <p className="text-danger">{error}</p>}
+        </div>
+        <div className="col-md-4"></div>
       </div>
 
-      {/* Main Content */}
+      {/* Hero Section */}
       <div className="content-wrapper">
         <section className="hero card">
           <h1>Welcome to City Library</h1>
           <p>Your hub for books, events, and digital resources!</p>
-
-          <div className="hero-buttons">
-            <Link to="/browse" className="btn primary-btn">Browse Books</Link>
-            <Link to="/events" className="btn dark-btn">Upcoming Events</Link>
-          </div>
         </section>
       </div>
 
-      <div className='row '>
-      {products.map((product,index)=>(
-      <div className='col-md-3 mb-4'>
-        <div className='card shadow h -100'>
-          <img src={img_url+product.product_photo}alt="product photo"className='card-img product
-          _img mt-3'/>
-        <div className="cardbody">
-          <h5>{product.product_name}</h5>
-          <p className='text-dark'>{product.product_description.slice(0,50)}...</p>
-          <b className="text-warning">{product.product_cost}</b> <br />
+      {/* Product Section */}
+      <div className="row">
+        {products.map((product, index) => (
+          <div className="col-md-3 mb-4" key={product.id || index}>
+            <div className="card shadow h-100">
 
-           <button className=" btn btn-success mt-2" onClick={()=> navigate("/mpesapayment",{state:{product}})} >Buy now</button>
-        </div>
-    </div>
-    </div>
-    ))}
-    </div>
+              <img
+                src={img_url + product.product_photo}
+                alt={product.product_name}
+                className="card-img-top product_img mt-3"
+                style={{ width: "100%", height: "300px", objectFit: "cover" }}
+              />
+
+              <div className="card-body">
+                <h5>{product.product_name}</h5>
+                <p className="text-dark">
+                  {product.product_description.slice(0, 50)}...
+                </p>
+                <b className="text-warning">{product.product_cost}</b>
+                <br />
+
+                <button
+                  className="btn btn-success mt-2"
+                  onClick={() =>
+                    navigate("/mpesapayment", { state: { product } })
+                  }
+                >
+                  Buy now
+                </button>
+              </div>
+
+            </div>
+          </div>
+        ))}
+      </div>
 
       {/* Chatbot Button */}
       <button className="chat-toggle-btn" onClick={toggleChat}>
@@ -221,27 +221,28 @@ const HomePage = () => {
       {isChatOpen && (
         <div className="chat-window">
 
-          {/* Header */}
           <div className="chat-header">
             <span>Library Assistant</span>
             <button onClick={toggleChat}>✖</button>
           </div>
 
-          {/* Messages */}
           <div className="chat-messages" ref={messagesRef}>
             {messages.map((msg) => (
               <div
                 key={msg.id}
-                className={`chat-bubble ${msg.sender === "user" ? "user-msg" : "bot-msg"}`}
+                className={`chat-bubble ${
+                  msg.sender === "user" ? "user-msg" : "bot-msg"
+                }`}
               >
                 {msg.text}
               </div>
             ))}
 
-            {isTyping && <div className="typing-indicator">Assistant is typing...</div>}
+            {isTyping && (
+              <div className="typing-indicator">Assistant is typing...</div>
+            )}
           </div>
 
-          {/* Input */}
           <div className="chat-input-area">
             <input
               type="text"

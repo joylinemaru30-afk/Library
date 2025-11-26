@@ -42,11 +42,7 @@ const Navbar = () => {
 
         {/* Right-aligned items */}
         <ul className="navbar-nav ms-auto">
-          <li className="nav-item">
-            <Link to="/borrow" className="nav-link fw-bold">
-              Borrow
-            </Link>
-          </li>
+          
           <li className="nav-item">
             <Link to="/lend" className="nav-link fw-bold">
               Lending

@@ -39,8 +39,8 @@ const SellBookAndPay = () => {
       data.append("product_photo", productphoto);
 
       await axios.post(
-        "https://joykosgei.pythonanywhere.com/api/addproduct",
-        data
+        "https://joykosgei.pythonanywhere.com/api/getproducts"
+        
       );
 
       setloading(false);

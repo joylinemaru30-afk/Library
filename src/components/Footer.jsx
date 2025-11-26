@@ -32,12 +32,6 @@ const Footer = () => {
                 <Link to="/location" className="text-white text-decoration-none">Location</Link>
               </li>
               <li>
-                <Link to="/catalog" className="text-white text-decoration-none">Catalog</Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-white text-decoration-none">Contact</Link>
-              </li>
-              <li>
                 <a
                   href="https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID_HERE"
                   target="_blank"
